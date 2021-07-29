@@ -1,0 +1,36 @@
+{
+    "name": "kerattila/laravel-x509-auth",
+    "description": "X509 Authentication integration for Laravel.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4.0",
+        "ext-openssl": "*",
+        "illuminate/support": "^6.0|^7.0|^8.0"
+    },
+    "suggest": {
+        "spatie/ssl-certificate": "The class provided by this package makes it incredibly easy to query the properties on an ssl certificate. "
+    },
+    "authors": [
+        {
+            "name": "Keresztesi Attila",
+            "email": "keresztesiattila92@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Kerattila\\X509Auth\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kerattila\\X509Auth\\X509AuthServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
