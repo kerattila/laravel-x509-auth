@@ -25,9 +25,21 @@ After publishing configuration file, adjust the values accordingly your needs:
 <?php
 
 return [
+    'workdir' => base_path(),
+    // This should be pointed to the user class
+    'user_class' => \App\User::class,
+    // In case if you want to extend the original certificate class
+    'certificate_class' => \Kerattila\X509Auth\Certificate\ClientCertificate::class,
     'middleware' => [
-        'enabled' => env('X509_MIDDLEWARE', true), // Middleware can be easily enabled disabled via .env
-        'private_key' => env('X509_PRIVATE_KEY') // After generating the Root CA, point it to the private key
+        // Enable or disable middleware
+        'enabled' => true,
+        'rules' => [
+            /** SSL parameter === user field */
+            'SSL_CLIENT_M_SERIAL' => 'username',
+            'SSL_CLIENT_S_DN_Email' => 'email'
+        ],
+        // Automatically log in the user if certificate matches a user
+        'auto_login' => true
     ],
     'root_ca' => [
         'private_key_name' => 'root_ca_private', // Root cetificate private key name
