@@ -13,7 +13,7 @@ class GenerateRootCA extends Command
      *
      * @var string
      */
-    protected $signature = 'x509auth:generate:root-ca {--dir=} {--private=} {--public=}';
+    protected $signature = 'x509auth:generate:root-ca {--dir=} {--private=} {--public=} {--numbits=} {--days=}';
 
     /**
      * The console command description.
@@ -32,11 +32,15 @@ class GenerateRootCA extends Command
         $dir = $this->option('dir') ?? config('x509-auth.workdir');
         $privateKey = $this->option('private') ?? config('x509-auth.root_ca.private_key_name');
         $publicKey = $this->option('public') ?? config('x509-auth.root_ca.public_key_name');
+        $numbits = $this->option('numbits') ?? config('x509-auth.root_ca.numbits');
+        $days = $this->option('days') ?? config('x509-auth.root_ca.days');
         (new RootCertificateGenerator(
             $dir,
             $privateKey,
             $publicKey,
-            config('x509-auth.root_ca.subject')
+            config('x509-auth.root_ca.subject'),
+            $numbits,
+            $days
         ))->generate(
                 $this->getOutput()->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE
             );
