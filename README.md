@@ -1,4 +1,4 @@
-# Laravel Track Author
+# Laravel X509 Authentication package
 
 This package allow you to generate root certificates and signed certificates for various purposes (eg. Authentication).
 ## Install and configure
