@@ -6,7 +6,7 @@
     "require": {
         "php": ">=7.4.0",
         "ext-openssl": "*",
-        "illuminate/support": "^6.0|^7.0|^8.0"
+        "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0"
     },
     "suggest": {
         "spatie/ssl-certificate": "The class provided by this package makes it incredibly easy to query the properties on an ssl certificate. "
